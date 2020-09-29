@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Floyd\FloydModel.cs" />
     <Compile Include="Algorithms\Interfaces\IShortestPathAlgorithm.cs" />
     <Compile Include="Algorithms\Interfaces\IShortestPathControlView.cs" />
     <Compile Include="Algorithms\Interfaces\IShortestPathDataView.cs" />

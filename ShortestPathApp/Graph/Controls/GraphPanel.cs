@@ -217,7 +217,7 @@ namespace ShortestPathApp.Graph.Controls
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            //base.OnPaint(e);
+            base.OnPaint(e);
 
             if (Vertices == null)
             {
@@ -263,15 +263,13 @@ namespace ShortestPathApp.Graph.Controls
                         int xCenter = nBeginVertex.X;
                         int yCenter = nBeginVertex.Y;
 
-                        if (xDiff >= 0 && yDiff >= 0 ||
-                            xDiff >= 0 && yDiff <= 0)
+                        if (xDiff >= 0)
                         {
                             angle += Math.PI;
                         }
 
                         nEndVertex.X = (int)((nDistance - nNodeRadius) * Math.Cos(angle)) + xCenter;
                         nEndVertex.Y = (int)((nDistance - nNodeRadius) * Math.Sin(angle)) + yCenter;
-
 
                         Pen linePen = GraphPanelTools.GraphArrowPen;
                         if (m_lMinPath != null && m_lMinPath.Count == Vertices.Count &&
@@ -287,21 +285,30 @@ namespace ShortestPathApp.Graph.Controls
                             nEndVertex
                             );
 
-                        Point nMiddle = new Point(
-                            (nBeginVertex.X + nEndVertex.X) / 2,
-                            (nBeginVertex.Y + nEndVertex.Y) / 2
-                            );
 
-                        if (Vertices[j][i] == Vertices[i][j] && j < i ||
-                           Vertices[j][i] != Vertices[i][j])
+                        Point nWeightPoint;
+                        if (Vertices[i][j] == Vertices[j][i])
                         {
-                            g.DrawString(
+                            nWeightPoint = new Point(
+                                nNodeRadius + (Nodes[i].Location.X + Nodes[j].Location.X) / 2,
+                                nNodeRadius + (Nodes[i].Location.Y + Nodes[j].Location.Y) / 2
+                            );
+                        }
+                        else
+                        {
+                            int nOffset = nNodeRadius * 3;
+                            nWeightPoint = new Point(
+                                (int)((nDistance - nOffset) * Math.Cos(angle)) + xCenter,
+                                (int)((nDistance - nOffset) * Math.Sin(angle)) + yCenter
+                            );
+                        }
+
+                        g.DrawString(
                             Vertices[i][j].ToString(),
                             GraphPanelTools.GraphFont,
                             Brushes.Black,
-                            nMiddle
-                            );
-                        }
+                            nWeightPoint
+                        );
                     }
                 }
             }
