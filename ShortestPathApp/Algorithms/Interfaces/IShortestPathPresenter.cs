@@ -33,6 +33,6 @@ namespace ShortestPathApp.Algorithms.Interfaces
         /// Собрать путь
         /// </summary>
         /// <param name="paths"></param>
-        void BuildPath(List<int> paths, int nEndVertex);
+        void BuildPath(int nEndVertex);
     }
 }

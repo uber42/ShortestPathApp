@@ -25,11 +25,25 @@ namespace ShortestPathApp.Graph.Controls
         /// </summary>
         private List<Tuple<bool, int>> m_lMinPath;
 
+        /// <summary>
+        /// Рисовать веса
+        /// </summary>
+        private bool m_fDrawWeights;
+
+        /// <summary>
+        /// Рисовать дуги
+        /// </summary>
+        private EDrawEdges m_eDrawEdges;
+
         public GraphPanel()
         {
+            m_eDrawEdges = EDrawEdges.Draw;
             m_bIsCoordsInit = false;
+            m_fDrawWeights = true;
             Nodes = new List<NodeGraph>();
             m_lMinPath = new List<Tuple<bool, int>>();
+
+            InitializeActions();
         }
 
         /// <summary>
@@ -234,8 +248,14 @@ namespace ShortestPathApp.Graph.Controls
                 CalcCoords();
             }
 
+            if(m_eDrawEdges == EDrawEdges.None)
+            {
+                return;
+            }
+
             int nNodeRadius = Configuration.ms_nGraphNodeRadius;
             int nCount = Vertices.Count;
+
             Graphics g = e.Graphics;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             g.SmoothingMode = SmoothingMode.HighQuality;
@@ -246,71 +266,116 @@ namespace ShortestPathApp.Graph.Controls
                 {
                     if (i != j && Vertices[i][j] != 0)
                     {
-                        Point nBeginVertex = new Point(
+                        switch (m_eDrawEdges)
+                        {
+                            case EDrawEdges.Draw:
+                                DrawEdges(i, j, g);
+                                break;
+                            case EDrawEdges.DrawOnlyPath:
+                                DrawOnlyPathEdges(i, j, g);
+                                break;
+                            default:
+                                break;
+                        }
+
+                        
+
+                        
+                    }
+                }
+            }
+        }
+
+        private void DrawOnlyPathEdges(int i, int j, Graphics g)
+        {
+            if (m_lMinPath != null && m_lMinPath.Count == Vertices.Count &&
+               m_lMinPath[i].Item2 + 1 == m_lMinPath[j].Item2 &&
+               m_lMinPath[i].Item1 && m_lMinPath[j].Item1)
+            {
+                DrawEdges(i, j, g);
+            }
+        }
+
+        private void DrawEdges(int i, int j, Graphics g)
+        {
+            int nNodeRadius = Configuration.ms_nGraphNodeRadius;
+            int nCount = Vertices.Count;
+
+            Point nBeginVertex = new Point(
                             Nodes[i].Location.X + nNodeRadius,
                             Nodes[i].Location.Y + nNodeRadius
                             );
-                        Point nEndVertex = new Point(
+            Point nEndVertex = new Point(
                             Nodes[j].Location.X + nNodeRadius,
                             Nodes[j].Location.Y + nNodeRadius
                             );
 
-                        int xDiff = nBeginVertex.X - nEndVertex.X;
-                        int yDiff = nBeginVertex.Y - nEndVertex.Y;
-                        double nDistance = Math.Sqrt(xDiff * xDiff + yDiff * yDiff);
+            int xDiff = nBeginVertex.X - nEndVertex.X;
+            int yDiff = nBeginVertex.Y - nEndVertex.Y;
+            double nDistance = Math.Sqrt(xDiff * xDiff + yDiff * yDiff);
 
-                        double angle = Math.Atan((double)yDiff / xDiff);
-                        int xCenter = nBeginVertex.X;
-                        int yCenter = nBeginVertex.Y;
+            double angle = Math.Atan((double)yDiff / xDiff);
+            int xCenter = nBeginVertex.X;
+            int yCenter = nBeginVertex.Y;
 
-                        if (xDiff >= 0)
-                        {
-                            angle += Math.PI;
-                        }
+            if (xDiff >= 0)
+            {
+                angle += Math.PI;
+            }
 
-                        nEndVertex.X = (int)((nDistance - nNodeRadius) * Math.Cos(angle)) + xCenter;
-                        nEndVertex.Y = (int)((nDistance - nNodeRadius) * Math.Sin(angle)) + yCenter;
+            nEndVertex.X = (int)((nDistance - nNodeRadius) * Math.Cos(angle)) + xCenter;
+            nEndVertex.Y = (int)((nDistance - nNodeRadius) * Math.Sin(angle)) + yCenter;
 
-                        Pen linePen = GraphPanelTools.GraphArrowPen;
-                        if (m_lMinPath != null && m_lMinPath.Count == Vertices.Count &&
-                           m_lMinPath[i].Item2 + 1 == m_lMinPath[j].Item2 &&
-                           m_lMinPath[i].Item1 && m_lMinPath[j].Item1)
-                        {
-                            linePen = GraphPanelTools.GraphPathArrowPen;
-                        }
+            Pen linePen = GraphPanelTools.GraphArrowPen;
+            if (m_lMinPath != null && m_lMinPath.Count == Vertices.Count &&
+               m_lMinPath[i].Item2 + 1 == m_lMinPath[j].Item2 &&
+               m_lMinPath[i].Item1 && m_lMinPath[j].Item1)
+            {
+                linePen = GraphPanelTools.GraphPathArrowPen;
+            }
 
-                        g.DrawLine(
-                            linePen,
-                            nBeginVertex,
-                            nEndVertex
-                            );
+            g.DrawLine(
+                linePen,
+                nBeginVertex,
+                nEndVertex
+                );
+
+            DrawWeight(
+                i, j, (int)nDistance, angle,
+                new Point(xCenter, yCenter), g
+                );
+        }
 
 
-                        Point nWeightPoint;
-                        if (Vertices[i][j] == Vertices[j][i])
-                        {
-                            nWeightPoint = new Point(
-                                nNodeRadius + (Nodes[i].Location.X + Nodes[j].Location.X) / 2,
-                                nNodeRadius + (Nodes[i].Location.Y + Nodes[j].Location.Y) / 2
-                            );
-                        }
-                        else
-                        {
-                            int nOffset = nNodeRadius * 3;
-                            nWeightPoint = new Point(
-                                (int)((nDistance - nOffset) * Math.Cos(angle)) + xCenter,
-                                (int)((nDistance - nOffset) * Math.Sin(angle)) + yCenter
-                            );
-                        }
+        private void DrawWeight(int i, int j, int nDistance, double angle, Point pCenter, Graphics g)
+        {
+            if (m_fDrawWeights)
+            {
+                int nNodeRadius = Configuration.ms_nGraphNodeRadius;
 
-                        g.DrawString(
-                            Vertices[i][j].ToString(),
-                            GraphPanelTools.GraphFont,
-                            Brushes.Black,
-                            nWeightPoint
-                        );
-                    }
+                Point nWeightPoint;
+                if (Vertices[i][j] == Vertices[j][i])
+                {
+                    nWeightPoint = new Point(
+                        nNodeRadius + (Nodes[i].Location.X + Nodes[j].Location.X) / 2,
+                        nNodeRadius + (Nodes[i].Location.Y + Nodes[j].Location.Y) / 2
+                    );
                 }
+                else
+                {
+                    int nOffset = nNodeRadius * 4;
+                    nWeightPoint = new Point(
+                        (int)((nDistance - nOffset) * Math.Cos(angle)) + pCenter.X,
+                        (int)((nDistance - nOffset) * Math.Sin(angle)) + pCenter.Y
+                    );
+                }
+
+                g.DrawString(
+                    Vertices[i][j].ToString(),
+                    GraphPanelTools.GraphFont,
+                    Brushes.Black,
+                    nWeightPoint
+                );
             }
         }
 

@@ -77,7 +77,7 @@
     <Compile Include="Graph\Controls\NodeGraph.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Graph\Controls\NodeGraphActions.cs">
+    <Compile Include="Graph\Controls\GraphActions.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Graph\GraphModel.cs" />

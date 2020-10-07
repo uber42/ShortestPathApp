@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.executeButton = new System.Windows.Forms.Button();
             this.algorithmsComboBox = new System.Windows.Forms.ComboBox();
+            this.executeButton = new System.Windows.Forms.Button();
             this.iShortestPathAlgorithmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iShortestPathAlgorithmBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -53,16 +53,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Алгоритм";
             // 
-            // executeButton
-            // 
-            this.executeButton.Location = new System.Drawing.Point(6, 45);
-            this.executeButton.Name = "executeButton";
-            this.executeButton.Size = new System.Drawing.Size(198, 23);
-            this.executeButton.TabIndex = 1;
-            this.executeButton.Text = "Выполнить";
-            this.executeButton.UseVisualStyleBackColor = true;
-            this.executeButton.Click += new System.EventHandler(this.ExecuteButton_Click);
-            // 
             // algorithmsComboBox
             // 
             this.algorithmsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -75,6 +65,17 @@
             this.algorithmsComboBox.Name = "algorithmsComboBox";
             this.algorithmsComboBox.Size = new System.Drawing.Size(198, 21);
             this.algorithmsComboBox.TabIndex = 0;
+            this.algorithmsComboBox.SelectedIndexChanged += new System.EventHandler(this.AlgorithmsComboBox_SelectedIndexChanged);
+            // 
+            // executeButton
+            // 
+            this.executeButton.Location = new System.Drawing.Point(6, 45);
+            this.executeButton.Name = "executeButton";
+            this.executeButton.Size = new System.Drawing.Size(198, 23);
+            this.executeButton.TabIndex = 1;
+            this.executeButton.Text = "Выполнить";
+            this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.ExecuteButton_Click);
             // 
             // iShortestPathAlgorithmBindingSource
             // 

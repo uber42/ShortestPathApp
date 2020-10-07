@@ -101,5 +101,21 @@ namespace ShortestPathApp.Algorithms.Views
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void AlgorithmsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var algorithmComboBox = sender as ComboBox;
+
+            string selected = (string)algorithmComboBox.SelectedItem;
+
+            if(selected == "Алгоритм Дейкстры")
+            {
+                Presenter?.SetAlgorithm(EShortestPathAlgorithm.Dijkstra);
+            }
+            else
+            {
+                Presenter?.SetAlgorithm(EShortestPathAlgorithm.Floyd);
+            }
+        }
     }
 }

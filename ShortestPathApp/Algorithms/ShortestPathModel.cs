@@ -88,6 +88,17 @@ namespace ShortestPathApp.Algorithms
         }
 
         /// <summary>
+        /// Вычислить последовательность обхода вершин
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <param name="nEndVertex"></param>
+        /// <param name="endPath"></param>
+        public void BuildMinPath(int nEndVertex, ref List<int> endPath)
+        {
+            Algorithm.BuildMinPath(nEndVertex, ref endPath);
+        }
+
+        /// <summary>
         /// Установить алгоритм
         /// </summary>
         /// <param name="algorithm">Модель алгоритма</param>

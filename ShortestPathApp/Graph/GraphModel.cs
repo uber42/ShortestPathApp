@@ -188,23 +188,9 @@ namespace ShortestPathApp.Graph
             OnUpdateMatrix?.Invoke(this, EventArgs.Empty);
         }
 
-        private void BuildMinPath(List<int> paths, int nEndVertex, ref List<int> endPath)
+        public void BuildPath(List<int> lPathOrder)
         {
-            if (nEndVertex == -1)
-            {
-                return;
-            }
-
-            BuildMinPath(paths, paths[nEndVertex], ref endPath);
-            endPath.Add(nEndVertex);
-        }
-
-        public void BuildPath(List<int> paths, int nEndVertex)
-        {
-            List<int> minPath = new List<int>();
-            BuildMinPath(paths, nEndVertex, ref minPath);
-
-            OnPathBuilt?.Invoke(this, minPath);
+            OnPathBuilt?.Invoke(this, lPathOrder);
         }
     }
 }

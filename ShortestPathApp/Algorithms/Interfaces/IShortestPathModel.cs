@@ -63,6 +63,14 @@ namespace ShortestPathApp.Algorithms.Interfaces
         void CalculatePath(IGraphModel graph, int nBeginVertex);
 
         /// <summary>
+        /// Вычислить последовательность обхода вершин
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <param name="nEndVertex"></param>
+        /// <param name="endPath"></param>
+        void BuildMinPath(int nEndVertex, ref List<int> endPath);
+
+        /// <summary>
         /// Обновить представления из презентера графа
         /// </summary>
         void UpdateFromGraph();

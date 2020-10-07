@@ -13,6 +13,7 @@ using ShortestPathApp.Algorithms.Interfaces;
 using ShortestPathApp.Graph.Interfaces;
 using ShortestPathApp.MVP.Support;
 using ShortestPathApp.Algorithms.Dijkstra;
+using ShortestPathApp.Algorithms.Floyd;
 
 namespace ShortestPathApp.Algorithms
 {
@@ -66,7 +67,8 @@ namespace ShortestPathApp.Algorithms
                     break;
 
                 case EShortestPathAlgorithm.Floyd:
-                    throw new NotImplementedException();
+                    algorithmInstance = new FloydModel();
+                    break;
 
                 default:
                     throw new ArgumentException();
@@ -79,9 +81,12 @@ namespace ShortestPathApp.Algorithms
         /// Собрать путь
         /// </summary>
         /// <param name="paths">Путь</param>
-        public void BuildPath(List<int> paths, int nEndVertex)
+        public void BuildPath(int nEndVertex)
         {
-            m_cGraph?.BuildPath(paths, nEndVertex);
+            List<int> lPathOrder = new List<int>();
+
+            m_cModel.BuildMinPath(nEndVertex, ref lPathOrder);
+            m_cGraph?.BuildPath(lPathOrder);
         }
 
         /// <summary>

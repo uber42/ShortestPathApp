@@ -87,7 +87,7 @@ namespace ShortestPathApp.Graph.Controls
             if (IsIncludedInPath)
             {
                 textColor = Brushes.Red;
-                pen = new Pen(Color.Red, 4);
+                pen = new Pen(Color.Red, 2);
             }
 
             m_Cache = new Bitmap(Size.Width, Size.Height);
@@ -125,6 +125,31 @@ namespace ShortestPathApp.Graph.Controls
             }
 
             pe.Graphics.DrawImage(m_Cache, 0, 0);
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+            Graphics g = e.Graphics;
+
+            if (Parent != null)
+            {
+                int index = Parent.Controls.GetChildIndex(this);
+                for (int i = Parent.Controls.Count - 1; i > index; i--)
+                {
+                    Control c = Parent.Controls[i];
+
+                    if (c.Bounds.IntersectsWith(Bounds) && c.Visible)
+                    {
+                        Bitmap bmp = new Bitmap(c.Width, c.Height, g);
+                        c.DrawToBitmap(bmp, c.ClientRectangle);
+                        g.TranslateTransform(c.Left - Left, c.Top - Top);
+                        g.DrawImageUnscaled(bmp, Point.Empty);
+                        g.TranslateTransform(Left - c.Left, Top - c.Top);
+                        bmp.Dispose();
+                    }
+                }
+            }
         }
     }
 }

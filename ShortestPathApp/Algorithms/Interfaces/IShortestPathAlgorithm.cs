@@ -27,6 +27,18 @@ namespace ShortestPathApp.Algorithms.Interfaces
         /// <param name="Dist">Список расстояний до каждой из вершин</param>
         /// <param name="Paths">Список путей</param>
         void Execute(int nBegin, ref List<int> Dist, ref List<int> Paths);
+
+        /// <summary>
+        /// Вычислить последовательность обхода вершин
+        /// </summary>
+        /// <param name="nEndVertex"></param>
+        /// <param name="endPath"></param>
+        void BuildMinPath(int nEndVertex, ref List<int> endPath);
+
+        /// <summary>
+        /// Сбросить кэшированные данные
+        /// </summary>
+        void Invalidate();
     }
 
     /// <summary>

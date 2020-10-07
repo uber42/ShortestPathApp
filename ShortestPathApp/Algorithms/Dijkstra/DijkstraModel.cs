@@ -22,6 +22,12 @@ namespace ShortestPathApp.Algorithms.Dijkstra
             set;
         }
 
+        public List<int> LastPath
+        {
+            private set;
+            get;
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -88,6 +94,30 @@ namespace ShortestPathApp.Algorithms.Dijkstra
 
             Dist.AddRange(lDistances);
             Paths.AddRange(lPaths);
+
+            LastPath = lPaths;
+        }
+
+        /// <summary>
+        /// Вычислить последовательность обхода вершин
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <param name="nEndVertex"></param>
+        /// <param name="endPath"></param>
+        public void BuildMinPath(int nEndVertex, ref List<int> endPath)
+        {
+            if (nEndVertex == -1)
+            {
+                return;
+            }
+
+            BuildMinPath(LastPath[nEndVertex], ref endPath);
+            endPath.Add(nEndVertex);
+        }
+
+        public void Invalidate()
+        {
+            return;
         }
     }
 }

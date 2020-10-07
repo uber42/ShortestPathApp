@@ -118,8 +118,9 @@ namespace ShortestPathApp.Algorithms.Views
         {
             if(weightsTable.ColumnCount != m_lNodesWeights.Count)
             {
+                int nCount = m_lNodesWeights.Count;
                 InvalidateWeightTable();
-                for (int i = 0; i < m_lNodesWeights.Count;i++)
+                for (int i = 0; i < nCount; i++)
                 {
                     string columnName = (i + 1).ToString();
                     weightsTable.Columns.Add(columnName, columnName);
@@ -147,7 +148,7 @@ namespace ShortestPathApp.Algorithms.Views
             var selectedCells = weightsTable.SelectedCells;
             if (selectedCells.Count == 1 && selectedCells[0].Value != null)
             {
-                Presenter?.BuildPath(NodesOrder, selectedCells[0].ColumnIndex);
+                Presenter?.BuildPath(selectedCells[0].ColumnIndex);
             }
         }
 

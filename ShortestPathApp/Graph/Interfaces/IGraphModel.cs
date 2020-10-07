@@ -58,6 +58,6 @@ namespace ShortestPathApp.Graph.Interfaces
         /// </summary>
         /// <param name="paths">Пути</param>
         /// <param name="nEndVertex">Конечная вершина</param>
-        void BuildPath(List<int> paths, int nEndVertex);
+        void BuildPath(List<int> lPathOrder);
     }
 }
