@@ -34,14 +34,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.graphLogicalView1 = new ShortestPathApp.Graph.Views.GraphLogicalView();
             this.GraphControlView = new ShortestPathApp.Graph.Views.GraphControlView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.shortestPathView1 = new ShortestPathApp.Algorithms.Views.ShortestPathView();
             this.algorithmControlView1 = new ShortestPathApp.Algorithms.Views.AlgorithmControlView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GraphMatrixView
@@ -94,26 +91,11 @@
             // 
             // GraphControlView
             // 
-            this.GraphControlView.Location = new System.Drawing.Point(449, 23);
+            this.GraphControlView.Location = new System.Drawing.Point(449, 0);
             this.GraphControlView.Name = "GraphControlView";
-            this.GraphControlView.Size = new System.Drawing.Size(216, 276);
+            this.GraphControlView.Size = new System.Drawing.Size(216, 203);
             this.GraphControlView.TabIndex = 3;
             this.GraphControlView.Vertices = null;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StripStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(666, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // StripStatus
-            // 
-            this.StripStatus.Name = "StripStatus";
-            this.StripStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // shortestPathView1
             // 
@@ -126,9 +108,10 @@
             // 
             // algorithmControlView1
             // 
-            this.algorithmControlView1.Location = new System.Drawing.Point(453, 305);
+            this.algorithmControlView1.BenchmarkTime = ((long)(0));
+            this.algorithmControlView1.Location = new System.Drawing.Point(449, 201);
             this.algorithmControlView1.Name = "algorithmControlView1";
-            this.algorithmControlView1.Size = new System.Drawing.Size(218, 155);
+            this.algorithmControlView1.Size = new System.Drawing.Size(218, 254);
             this.algorithmControlView1.TabIndex = 7;
             this.algorithmControlView1.VertexCount = 0;
             // 
@@ -139,7 +122,6 @@
             this.ClientSize = new System.Drawing.Size(666, 461);
             this.Controls.Add(this.algorithmControlView1);
             this.Controls.Add(this.shortestPathView1);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.GraphControlView);
             this.Controls.Add(this.tabControl1);
             this.MaximumSize = new System.Drawing.Size(682, 500);
@@ -149,10 +131,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -164,8 +143,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private Graph.Views.GraphControlView GraphControlView;
         private Graph.Views.GraphLogicalView graphLogicalView1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel StripStatus;
         private Algorithms.Views.ShortestPathView shortestPathView1;
         private Algorithms.Views.AlgorithmControlView algorithmControlView1;
     }

@@ -24,11 +24,6 @@ namespace ShortestPathApp.Forms.Main
         {
             InitializeComponent();
 
-            GraphControlView.OnMessage += (obj, message) =>
-            {
-                StripStatus.Text += message;
-            };
-
             graph = new GraphModel(4);
             shortestPath = new ShortestPathModel();
 

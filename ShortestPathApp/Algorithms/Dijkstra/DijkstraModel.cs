@@ -41,7 +41,7 @@ namespace ShortestPathApp.Algorithms.Dijkstra
         /// <param name="nBegin">Начальная вершина</param>
         /// <param name="Dist">Список расстояний до каждой из вершин</param>
         /// <param name="Paths">Список путей</param>
-        public void Execute(int nBegin, ref List<int> Dist, ref List<int> Paths)
+        public long Execute(int nBegin, ref List<int> Dist, ref List<int> Paths)
         {
             int nVertices = Graph.Vertices.Count;
             var Matrix = Graph.Vertices;
@@ -59,6 +59,8 @@ namespace ShortestPathApp.Algorithms.Dijkstra
 
             lDistances[nBegin] = 0;
             lPaths[nBegin] = -1;
+
+            DateTime start = DateTime.Now;
 
             for (int i = 1; i < nVertices; i++)
             {
@@ -92,10 +94,27 @@ namespace ShortestPathApp.Algorithms.Dijkstra
                 }
             }
 
-            Dist.AddRange(lDistances);
-            Paths.AddRange(lPaths);
+            DateTime end = DateTime.Now;
+
+            Dist?.AddRange(lDistances);
+            Paths?.AddRange(lPaths);
 
             LastPath = lPaths;
+
+            return (end.Ticks - start.Ticks);
+        }
+
+        public long Benchmark()
+        {
+            long lTotalTime = 0;
+
+            List<int> mockList = null;
+            for(int i = 0;i < Graph.Vertices.Count;i++)
+            {
+                lTotalTime += this.Execute(i, ref mockList, ref mockList);
+            }
+
+            return lTotalTime;
         }
 
         /// <summary>

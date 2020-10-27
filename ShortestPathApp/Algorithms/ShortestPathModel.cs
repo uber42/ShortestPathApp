@@ -1,4 +1,10 @@
-﻿using System;
+﻿/********************************************************************
+	@created:	2020/09/19
+	@filename: 	ShortestPathModel.cs
+	@author:	Pavel Chursin
+*********************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,6 +61,11 @@ namespace ShortestPathApp.Algorithms
         public event EventHandler OnUpdateGraph;
 
         /// <summary>
+        /// Событие обновления времени исполнения
+        /// </summary>
+        public event EventHandler<long> OnBenchmarkTimeUpdate;
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         public ShortestPathModel()
@@ -82,8 +93,9 @@ namespace ShortestPathApp.Algorithms
             InvalidateLists();
 
             Algorithm.Graph = graph;
-            Algorithm.Execute(nBeginVertex, ref m_lNodesWeight, ref m_lNodesOrder);
+            long BenchmarkTime = Algorithm.Execute(nBeginVertex, ref m_lNodesWeight, ref m_lNodesOrder);
 
+            OnBenchmarkTimeUpdate?.Invoke(this, BenchmarkTime);
             OnWeightsUpdate?.Invoke(this, EventArgs.Empty);
         }
 
