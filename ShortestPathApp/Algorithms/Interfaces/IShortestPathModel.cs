@@ -74,5 +74,10 @@ namespace ShortestPathApp.Algorithms.Interfaces
         /// Обновить представления из презентера графа
         /// </summary>
         void UpdateFromGraph();
+
+        /// <summary>
+        /// Инвалидировать данные алгоритма
+        /// </summary>
+        void InvalidateAlgorithmData();
     }
 }

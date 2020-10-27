@@ -188,6 +188,7 @@ namespace ShortestPathApp.Graph
         public void SetEdge(int nFirstVertex, int nSecondVertex, int nWeight)
         {
             m_cModel?.SetEdge(nFirstVertex, nSecondVertex, nWeight);
+            m_cShortestPath?.InvalidateAlgorithmData();
         }
 
         /// <summary>
@@ -197,6 +198,7 @@ namespace ShortestPathApp.Graph
         public void ReadGraph(IGraphReader reader)
         {
             m_cModel?.ReadGraph(reader);
+            m_cShortestPath?.InvalidateAlgorithmData();
         }
 
         /// <summary>
@@ -205,6 +207,7 @@ namespace ShortestPathApp.Graph
         public void AddVertex()
         {
             m_cModel?.AddVertex();
+            m_cShortestPath?.InvalidateAlgorithmData();
         }
 
         /// <summary>
@@ -214,6 +217,7 @@ namespace ShortestPathApp.Graph
         public void RemoveVertex(int nVertex)
         {
             m_cModel?.RemoveVertex(nVertex);
+            m_cShortestPath?.InvalidateAlgorithmData();
         }
 
         #endregion Обработчики порядка представления->модель

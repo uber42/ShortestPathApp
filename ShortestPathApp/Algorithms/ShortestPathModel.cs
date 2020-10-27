@@ -114,5 +114,13 @@ namespace ShortestPathApp.Algorithms
         {
             OnUpdateGraph?.Invoke(this, EventArgs.Empty);
         }
+
+        /// <summary>
+        /// Инвалидировать данные алгоритма
+        /// </summary>
+        public void InvalidateAlgorithmData()
+        {
+            Algorithm.Invalidate();
+        }
     }
 }
