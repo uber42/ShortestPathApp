@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShortestPathApp.Graph.GraphModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAAAUAEIAAACAADAAAAACAAEAAAAgAEAAA=</HashCode>
+      <FileName>Graph\GraphModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShortestPathApp.Graph.GraphPresenter" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACCAAADAiBAAAAACACEAAAAAAEQIA=</HashCode>
+      <FileName>Graph\GraphPresenter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShortestPathApp.Graph.Views.GraphLogicalView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgQAAAiAAIMAAAACAAAADAAAAACAAMAAAAAAEAAA=</HashCode>
+      <FileName>Graph\Views\GraphLogicalView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShortestPathApp.Graph.Views.GraphMatrixView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAgAQAAACCAIAAAAACAAAADAAAgACAAMAAAAAAEAAA=</HashCode>
+      <FileName>Graph\Views\GraphMatrixView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ShortestPathApp.Algorithms.Interfaces.IShortestPathControlView" Collapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Algorithms\Interfaces\IShortestPathControlView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Algorithms.Interfaces.IShortestPathDataView" Collapsed="true">
+    <Position X="13.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAABIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Interfaces\IShortestPathDataView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Algorithms.Interfaces.IShortestPathModel" Collapsed="true">
+    <Position X="11.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhAAAAAIAAIAAEAAIAAQAAAAQAAgAAAAACAAQAAAA=</HashCode>
+      <FileName>Algorithms\Interfaces\IShortestPathModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Algorithms.Interfaces.IShortestPathOperations" Collapsed="true">
+    <Position X="11.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Interfaces\IShortestPathOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Algorithms.Interfaces.IShortestPathPresenter">
+    <Position X="9.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Interfaces\IShortestPathPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Algorithms.Interfaces.IShortestPathView" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Interfaces\IShortestPathView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Interfaces.IGraphControl" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graph\Interfaces\IGraphControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Interfaces.IGraphData">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Graph\Interfaces\IGraphData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Interfaces.IGraphModel" Collapsed="true">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAAAUAEIAAACAACAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Graph\Interfaces\IGraphModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Interfaces.IGraphOperations">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAEAAA=</HashCode>
+      <FileName>Graph\Interfaces\IGraphOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Interfaces.IGraphPresenter" Collapsed="true">
+    <Position X="6.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graph\Interfaces\IGraphPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Interfaces.IGraphView" Collapsed="true">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graph\Interfaces\IGraphView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Views.Interfaces.IGraphControlView" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Graph\Views\Interfaces\IGraphControlView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Views.Interfaces.IGraphDataView" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graph\Views\Interfaces\IGraphDataView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.Graph.Views.Interfaces.IGraphLogicalView" Collapsed="true">
+    <Position X="3" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graph\Views\Interfaces\IGraphLogicalView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.MVP.IPresenter&lt;TPresenterContract, TViewContract&gt;">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVP\Core\IPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShortestPathApp.MVP.IView&lt;TViewContract, TPresenterContract&gt;">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAACAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>MVP\Core\IView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

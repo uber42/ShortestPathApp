@@ -123,8 +123,10 @@ namespace ShortestPathApp.Algorithms.Floyd
                 }
             }
 
-            DateTime start = DateTime.Now;
+            System.Diagnostics.Stopwatch myStopwatch = new System.Diagnostics.Stopwatch();
+            myStopwatch.Start();
             
+
             for (int k = 0; k < GraphMatrix.Count; k++)
             {
                 for (int i = 0; i < GraphMatrix.Count; i++)
@@ -146,24 +148,22 @@ namespace ShortestPathApp.Algorithms.Floyd
                 }
             }
 
-            DateTime end = DateTime.Now;
-
-            LastTimeExecution = (end - start).Ticks;
+            myStopwatch.Stop();
 
             Dist = PathsMatrix[nBegin].ToList();
             Paths = ParentsMatrix[nBegin].ToList();
 
-            return LastTimeExecution;
+            return myStopwatch.ElapsedTicks;
         }
 
-        public long Benchmark()
+        public Tuple<long, List<List<int>>> Benchmark()
         {
             long lTotalTime = 0;
 
             List<int> mockList = null;
             lTotalTime = this.Execute(0, ref mockList, ref mockList);
 
-            return lTotalTime;
+            return Tuple.Create(lTotalTime, PathsMatrix);
         }
 
         /// <summary>

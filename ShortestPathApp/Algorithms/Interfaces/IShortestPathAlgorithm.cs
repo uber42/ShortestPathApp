@@ -5,6 +5,7 @@
 *********************************************************************/
 
 using ShortestPathApp.Graph.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace ShortestPathApp.Algorithms.Interfaces
@@ -33,7 +34,7 @@ namespace ShortestPathApp.Algorithms.Interfaces
         /// Вычилить время
         /// </summary>
         /// <returns>Время</returns>
-        long Benchmark();
+        Tuple<long, List<List<int>>> Benchmark();
 
         /// <summary>
         /// Вычислить последовательность обхода вершин

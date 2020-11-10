@@ -37,18 +37,15 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.executeGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.benchmarkStartButton = new System.Windows.Forms.Button();
             this.iShortestPathAlgorithmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iShortestPathAlgorithmBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.benchmarkRepeatsNumber = new System.Windows.Forms.NumericUpDown();
-            this.benchmarkStartButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.executeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iShortestPathAlgorithmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iShortestPathAlgorithmBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.benchmarkRepeatsNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -124,15 +121,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.benchmarkStartButton);
-            this.groupBox2.Controls.Add(this.benchmarkRepeatsNumber);
             this.groupBox2.Location = new System.Drawing.Point(3, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(207, 91);
+            this.groupBox2.Size = new System.Drawing.Size(207, 55);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Бенчмарк";
+            // 
+            // benchmarkStartButton
+            // 
+            this.benchmarkStartButton.Location = new System.Drawing.Point(6, 19);
+            this.benchmarkStartButton.Name = "benchmarkStartButton";
+            this.benchmarkStartButton.Size = new System.Drawing.Size(198, 23);
+            this.benchmarkStartButton.TabIndex = 3;
+            this.benchmarkStartButton.Text = "Выполнить";
+            this.benchmarkStartButton.UseVisualStyleBackColor = true;
+            this.benchmarkStartButton.Click += new System.EventHandler(this.BenchmarkStartButton_Click);
             // 
             // iShortestPathAlgorithmBindingSource
             // 
@@ -141,42 +146,6 @@
             // iShortestPathAlgorithmBindingSource1
             // 
             this.iShortestPathAlgorithmBindingSource1.DataSource = typeof(ShortestPathApp.Algorithms.Interfaces.IShortestPathAlgorithm);
-            // 
-            // benchmarkRepeatsNumber
-            // 
-            this.benchmarkRepeatsNumber.Location = new System.Drawing.Point(6, 36);
-            this.benchmarkRepeatsNumber.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.benchmarkRepeatsNumber.Name = "benchmarkRepeatsNumber";
-            this.benchmarkRepeatsNumber.Size = new System.Drawing.Size(198, 20);
-            this.benchmarkRepeatsNumber.TabIndex = 3;
-            this.benchmarkRepeatsNumber.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // benchmarkStartButton
-            // 
-            this.benchmarkStartButton.Location = new System.Drawing.Point(6, 62);
-            this.benchmarkStartButton.Name = "benchmarkStartButton";
-            this.benchmarkStartButton.Size = new System.Drawing.Size(198, 23);
-            this.benchmarkStartButton.TabIndex = 3;
-            this.benchmarkStartButton.Text = "Выполнить";
-            this.benchmarkStartButton.UseVisualStyleBackColor = true;
-            this.benchmarkStartButton.Click += new System.EventHandler(this.BenchmarkStartButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Количество повторений:";
             // 
             // AlgorithmControlView
             // 
@@ -192,10 +161,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.executeGroupBox.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iShortestPathAlgorithmBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iShortestPathAlgorithmBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.benchmarkRepeatsNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,7 +180,5 @@
         private System.Windows.Forms.Label ExecutionTimeLabel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button benchmarkStartButton;
-        private System.Windows.Forms.NumericUpDown benchmarkRepeatsNumber;
-        private System.Windows.Forms.Label label1;
     }
 }

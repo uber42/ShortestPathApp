@@ -63,8 +63,8 @@ namespace ShortestPathApp.Algorithms.Benchmark
             {
                 for(int j = 0;j < algorithms.Count;j++)
                 {
-                    result[j].lTime += algorithms[j].Item2.Benchmark();
-                    algorithms[j].Item2.Invalidate();
+                    //result[j].lTime += algorithms[j].Item2.Benchmark();
+                    //algorithms[j].Item2.Invalidate();
                 }
             }
 

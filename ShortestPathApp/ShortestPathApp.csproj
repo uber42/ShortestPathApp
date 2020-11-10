@@ -71,6 +71,12 @@
     <Compile Include="Algorithms\Views\AlgorithmControlView.Designer.cs">
       <DependentUpon>AlgorithmControlView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Main\BenchmarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\BenchmarkForm.Designer.cs">
+      <DependentUpon>BenchmarkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graph\Controls\GraphPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -92,6 +98,7 @@
     <Compile Include="Graph\Interfaces\IGraphView.cs" />
     <Compile Include="Graph\ReadStrategies\GraphReadFake.cs" />
     <Compile Include="Graph\ReadStrategies\GraphReadFromFile.cs" />
+    <Compile Include="Graph\ReadStrategies\GraphReadRandom.cs" />
     <Compile Include="Graph\Resources\Images\ImagesProvider.cs" />
     <Compile Include="Graph\Resources\Images\ImagesResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -145,6 +152,9 @@
     <EmbeddedResource Include="Algorithms\Views\ShortestPathView.resx">
       <DependentUpon>ShortestPathView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\BenchmarkForm.resx">
+      <DependentUpon>BenchmarkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +188,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\DataSources\ShortestPathApp.Algorithms.Interfaces.IShortestPathAlgorithm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

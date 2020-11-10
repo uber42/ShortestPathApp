@@ -60,7 +60,8 @@ namespace ShortestPathApp.Algorithms.Dijkstra
             lDistances[nBegin] = 0;
             lPaths[nBegin] = -1;
 
-            DateTime start = DateTime.Now;
+            System.Diagnostics.Stopwatch myStopwatch = new System.Diagnostics.Stopwatch();
+            myStopwatch.Start();
 
             for (int i = 1; i < nVertices; i++)
             {
@@ -94,27 +95,32 @@ namespace ShortestPathApp.Algorithms.Dijkstra
                 }
             }
 
-            DateTime end = DateTime.Now;
+            myStopwatch.Stop();
 
             Dist?.AddRange(lDistances);
             Paths?.AddRange(lPaths);
 
             LastPath = lPaths;
 
-            return (end.Ticks - start.Ticks);
+            return myStopwatch.ElapsedTicks;
         }
 
-        public long Benchmark()
+        public Tuple<long, List<List<int>>> Benchmark()
         {
             long lTotalTime = 0;
+
+            List<List<int>> resultList = new List<List<int>>();
 
             List<int> mockList = null;
             for(int i = 0;i < Graph.Vertices.Count;i++)
             {
-                lTotalTime += this.Execute(i, ref mockList, ref mockList);
+                List<int> paths = new List<int>();
+                lTotalTime += this.Execute(i, ref paths, ref mockList);
+
+                resultList.Add(paths);
             }
 
-            return lTotalTime;
+            return Tuple.Create(lTotalTime, resultList);
         }
 
         /// <summary>

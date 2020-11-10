@@ -16,8 +16,6 @@ namespace ShortestPathApp.Graph.Views
     {
         private List<List<int>> m_lMatrix;
 
-        private List<int> m_lMinPath;
-
         public GraphLogicalView()
         {
             InitializeComponent();

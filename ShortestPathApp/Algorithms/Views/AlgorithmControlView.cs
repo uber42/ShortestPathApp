@@ -12,6 +12,7 @@ using ShortestPathApp.Graph.Views.Interfaces;
 using ShortestPathApp.MVP;
 using System.Collections.Generic;
 using ShortestPathApp.Algorithms.Benchmark;
+using ShortestPathApp.Forms.Main;
 
 namespace ShortestPathApp.Algorithms.Views
 {
@@ -142,17 +143,9 @@ namespace ShortestPathApp.Algorithms.Views
 
         private void BenchmarkStartButton_Click(object sender, EventArgs e)
         {
-            BenchmarkModel benchmark = new BenchmarkModel();
+            BenchmarkForm benchmarkForm = new BenchmarkForm();
 
-            var result = benchmark.Start((int)benchmarkRepeatsNumber.Value);
-
-            string message = null;
-            foreach(var item in result)
-            {
-                message += $"{item.algorithmName} : {item.lTime} тиков\n";
-            }
-
-            MessageBox.Show(Parent, message, "Результаты");
+            benchmarkForm.Show();
         }
     }
 }

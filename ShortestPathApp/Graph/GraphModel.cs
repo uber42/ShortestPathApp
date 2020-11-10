@@ -173,6 +173,11 @@ namespace ShortestPathApp.Graph
             OnUpdateCell?.Invoke(this, Tuple.Create(nvertexFirst, nvertexSecond));
         }
 
+        public void OnUpdate()
+        {
+            OnUpdateMatrix?.Invoke(this, EventArgs.Empty);
+        }
+
         #endregion Публичные методы
 
         /// <summary>
