@@ -153,9 +153,6 @@ namespace ShortestPathApp.Graph.Controls
             }
         }
 
-        /// <summary>
-        /// Инвалидировать значения минимальных путей
-        /// </summary>
         private void InvalidateMinPath()
         {
             m_lMinPath.Clear();

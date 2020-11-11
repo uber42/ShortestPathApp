@@ -25,7 +25,7 @@ namespace ShortestPathApp.Graph
         /// <summary>
         /// Конструктор
         /// </summary>
-        public GraphModel() : this(0)
+        public GraphModel()
         {
         }
 

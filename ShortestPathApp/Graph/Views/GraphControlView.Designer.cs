@@ -34,6 +34,7 @@
             this.vertexCountLabel = new System.Windows.Forms.Label();
             this.RemoveVertex = new System.Windows.Forms.Button();
             this.AddVertex = new System.Windows.Forms.Button();
+            this.loadFromFileButton = new System.Windows.Forms.Button();
             this.FakeReadButton = new System.Windows.Forms.Button();
             this.GraphControlGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -46,17 +47,18 @@
             this.GraphControlGroupBox.Controls.Add(this.vertexCountLabel);
             this.GraphControlGroupBox.Controls.Add(this.RemoveVertex);
             this.GraphControlGroupBox.Controls.Add(this.AddVertex);
+            this.GraphControlGroupBox.Controls.Add(this.loadFromFileButton);
             this.GraphControlGroupBox.Controls.Add(this.FakeReadButton);
             this.GraphControlGroupBox.Location = new System.Drawing.Point(3, 3);
             this.GraphControlGroupBox.Name = "GraphControlGroupBox";
-            this.GraphControlGroupBox.Size = new System.Drawing.Size(210, 193);
+            this.GraphControlGroupBox.Size = new System.Drawing.Size(210, 273);
             this.GraphControlGroupBox.TabIndex = 0;
             this.GraphControlGroupBox.TabStop = false;
             this.GraphControlGroupBox.Text = "Управление графом";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 92);
+            this.numericUpDown1.Location = new System.Drawing.Point(6, 104);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -79,7 +81,7 @@
             // vertexCountValueLabel
             // 
             this.vertexCountValueLabel.AutoSize = true;
-            this.vertexCountValueLabel.Location = new System.Drawing.Point(96, 23);
+            this.vertexCountValueLabel.Location = new System.Drawing.Point(96, 28);
             this.vertexCountValueLabel.Name = "vertexCountValueLabel";
             this.vertexCountValueLabel.Size = new System.Drawing.Size(0, 13);
             this.vertexCountValueLabel.TabIndex = 5;
@@ -87,7 +89,7 @@
             // vertexCountLabel
             // 
             this.vertexCountLabel.AutoSize = true;
-            this.vertexCountLabel.Location = new System.Drawing.Point(6, 23);
+            this.vertexCountLabel.Location = new System.Drawing.Point(3, 28);
             this.vertexCountLabel.Name = "vertexCountLabel";
             this.vertexCountLabel.Size = new System.Drawing.Size(84, 13);
             this.vertexCountLabel.TabIndex = 4;
@@ -95,7 +97,7 @@
             // 
             // RemoveVertex
             // 
-            this.RemoveVertex.Location = new System.Drawing.Point(6, 118);
+            this.RemoveVertex.Location = new System.Drawing.Point(6, 130);
             this.RemoveVertex.Name = "RemoveVertex";
             this.RemoveVertex.Size = new System.Drawing.Size(198, 30);
             this.RemoveVertex.TabIndex = 3;
@@ -113,9 +115,18 @@
             this.AddVertex.UseVisualStyleBackColor = true;
             this.AddVertex.Click += new System.EventHandler(this.AddVertex_Click);
             // 
+            // loadFromFileButton
+            // 
+            this.loadFromFileButton.Location = new System.Drawing.Point(6, 192);
+            this.loadFromFileButton.Name = "loadFromFileButton";
+            this.loadFromFileButton.Size = new System.Drawing.Size(198, 30);
+            this.loadFromFileButton.TabIndex = 1;
+            this.loadFromFileButton.Text = "Загрузить матрицу из файла";
+            this.loadFromFileButton.UseVisualStyleBackColor = true;
+            // 
             // FakeReadButton
             // 
-            this.FakeReadButton.Location = new System.Drawing.Point(6, 154);
+            this.FakeReadButton.Location = new System.Drawing.Point(6, 228);
             this.FakeReadButton.Name = "FakeReadButton";
             this.FakeReadButton.Size = new System.Drawing.Size(198, 30);
             this.FakeReadButton.TabIndex = 0;
@@ -129,7 +140,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.GraphControlGroupBox);
             this.Name = "GraphControlView";
-            this.Size = new System.Drawing.Size(216, 200);
+            this.Size = new System.Drawing.Size(216, 276);
             this.GraphControlGroupBox.ResumeLayout(false);
             this.GraphControlGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -146,5 +157,6 @@
         private System.Windows.Forms.Label vertexCountLabel;
         private System.Windows.Forms.Button RemoveVertex;
         private System.Windows.Forms.Button AddVertex;
+        private System.Windows.Forms.Button loadFromFileButton;
     }
 }

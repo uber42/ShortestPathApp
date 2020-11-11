@@ -50,11 +50,6 @@ namespace ShortestPathApp.Algorithms.Interfaces
         event EventHandler OnUpdateGraph;
 
         /// <summary>
-        /// Событие обновления времени исполнения
-        /// </summary>
-        event EventHandler<long> OnBenchmarkTimeUpdate;
-
-        /// <summary>
         /// Установить алгоритм
         /// </summary>
         /// <param name="algorithm">Модель алгоритма</param>

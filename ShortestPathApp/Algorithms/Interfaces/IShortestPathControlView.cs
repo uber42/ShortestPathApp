@@ -19,11 +19,5 @@ namespace ShortestPathApp.Algorithms.Interfaces
             get;
             set;
         }
-
-        long BenchmarkTime
-        {
-            get;
-            set;
-        }
     }
 }

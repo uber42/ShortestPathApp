@@ -41,7 +41,6 @@ namespace ShortestPathApp.Algorithms
 
             m_cModel.OnWeightsUpdate += M_cModel_OnPathUpdated;
             m_cModel.OnUpdateGraph += M_cModel_OnUpdateGraph;
-            m_cModel.OnBenchmarkTimeUpdate += M_cModel_OnBenchmarkTimeUpdate;
         }
 
         /// <summary>
@@ -128,20 +127,6 @@ namespace ShortestPathApp.Algorithms
                     else if(view is IShortestPathControlView)
                     {
                         (view as IShortestPathControlView).VertexCount = m_cGraph.Vertices.Count;
-                    }
-                });
-        }
-
-        private void M_cModel_OnBenchmarkTimeUpdate(object sender, long e)
-        {
-            var shortestPathModel = sender as IShortestPathModel;
-            this.views
-                .ToList()
-                .ForEach((view) =>
-                {
-                    if (view is IShortestPathControlView)
-                    {
-                        (view as IShortestPathControlView).BenchmarkTime = e;
                     }
                 });
         }

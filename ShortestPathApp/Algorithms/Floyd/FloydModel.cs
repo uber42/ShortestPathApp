@@ -43,12 +43,6 @@ namespace ShortestPathApp.Algorithms.Floyd
             set;
         }
 
-        private long LastTimeExecution
-        {
-            get;
-            set;
-        }
-
         public void BuildMinPath(int nEndVertex, ref List<int> endPath)
         {
             int nBegin = LastSearch;
@@ -67,8 +61,7 @@ namespace ShortestPathApp.Algorithms.Floyd
         /// <param name="nBegin">Начальная вершина</param>
         /// <param name="Dist">Список расстояний</param>
         /// <param name="Paths">Список путей</param>
-        /// <returns>Время исполнения</returns>
-        public long Execute(int nBegin, ref List<int> Dist, ref List<int> Paths)
+        public void Execute(int nBegin, ref List<int> Dist, ref List<int> Paths)
         {
             LastSearch = nBegin;
             if (ParentsMatrix != null)
@@ -76,35 +69,15 @@ namespace ShortestPathApp.Algorithms.Floyd
                 Dist = PathsMatrix[nBegin].ToList();
                 Paths = ParentsMatrix[nBegin].ToList();
 
-                return LastTimeExecution;
+                return;
             }
 
             ParentsMatrix = new List<List<int>>();
             PathsMatrix = new List<List<int>>();
 
             var GraphMatrix = Graph.Vertices;
-            int nVertices = Graph.Vertices.Count;
 
-            for (int i = 1; i < nVertices; i++)
-            {
-                int currentVertex = -1;
-                int shortestDistance = int.MaxValue;
-                for (int j = 0; j < nVertices; j++)
-                {
-                    if (GraphMatrix[i][j] != 0 && GraphMatrix[i][j] < shortestDistance)
-                    {
-                        currentVertex = j;
-                        shortestDistance = GraphMatrix[i][j];
-                    }
-                }
-
-                if (currentVertex == -1)
-                {
-                    throw new Exception("Неверная матрица");
-                }
-            }
-
-            for (int i = 0;i < GraphMatrix.Count;i++)
+            for(int i = 0;i < GraphMatrix.Count;i++)
             {
                 ParentsMatrix.Add(new List<int>());
                 PathsMatrix.Add(new List<int>());
@@ -123,8 +96,6 @@ namespace ShortestPathApp.Algorithms.Floyd
                 }
             }
 
-            DateTime start = DateTime.Now;
-            
             for (int k = 0; k < GraphMatrix.Count; k++)
             {
                 for (int i = 0; i < GraphMatrix.Count; i++)
@@ -146,24 +117,8 @@ namespace ShortestPathApp.Algorithms.Floyd
                 }
             }
 
-            DateTime end = DateTime.Now;
-
-            LastTimeExecution = (end - start).Ticks;
-
             Dist = PathsMatrix[nBegin].ToList();
             Paths = ParentsMatrix[nBegin].ToList();
-
-            return LastTimeExecution;
-        }
-
-        public long Benchmark()
-        {
-            long lTotalTime = 0;
-
-            List<int> mockList = null;
-            lTotalTime = this.Execute(0, ref mockList, ref mockList);
-
-            return lTotalTime;
         }
 
         /// <summary>
@@ -171,11 +126,6 @@ namespace ShortestPathApp.Algorithms.Floyd
         /// </summary>
         public void Invalidate()
         {
-            if(ParentsMatrix == null)
-            {
-                return;
-            }
-
             for(int i = 0;i < ParentsMatrix.Count;i++)
             {
                 ParentsMatrix[i].Clear();

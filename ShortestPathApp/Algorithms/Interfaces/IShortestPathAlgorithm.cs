@@ -26,14 +26,7 @@ namespace ShortestPathApp.Algorithms.Interfaces
         /// <param name="nBegin">Начальная вершина</param>
         /// <param name="Dist">Список расстояний до каждой из вершин</param>
         /// <param name="Paths">Список путей</param>
-        /// <returns>Время исполнения</returns>
-        long Execute(int nBegin, ref List<int> Dist, ref List<int> Paths);
-
-        /// <summary>
-        /// Вычилить время
-        /// </summary>
-        /// <returns>Время</returns>
-        long Benchmark();
+        void Execute(int nBegin, ref List<int> Dist, ref List<int> Paths);
 
         /// <summary>
         /// Вычислить последовательность обхода вершин

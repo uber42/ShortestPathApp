@@ -89,7 +89,6 @@ namespace ShortestPathApp.Graph
                 .ToList()
                 .ForEach((x) =>
                 {
-                    x.Vertices = m_cModel.Vertices;
                     x.UpdateView();
                 });
             }

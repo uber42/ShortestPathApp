@@ -11,7 +11,6 @@ using ShortestPathApp.Graph.Interfaces;
 using ShortestPathApp.Graph.Views.Interfaces;
 using ShortestPathApp.MVP;
 using System.Collections.Generic;
-using ShortestPathApp.Algorithms.Benchmark;
 
 namespace ShortestPathApp.Algorithms.Views
 {
@@ -53,27 +52,6 @@ namespace ShortestPathApp.Algorithms.Views
         {
             get;
             private set;
-        }
-        public long BenchmarkTime
-        {
-            get
-            {
-                long result;
-                try
-                {
-                    result = Int64.Parse(ExecutionTimeValueLabel.Text);
-                }
-                catch
-                {
-                    result = 0;
-                }
-
-                return result;
-            }
-            set
-            {
-                ExecutionTimeValueLabel.Text = value.ToString();
-            }
         }
 
         /// <summary>
@@ -138,21 +116,6 @@ namespace ShortestPathApp.Algorithms.Views
             {
                 Presenter?.SetAlgorithm(EShortestPathAlgorithm.Floyd);
             }
-        }
-
-        private void BenchmarkStartButton_Click(object sender, EventArgs e)
-        {
-            BenchmarkModel benchmark = new BenchmarkModel();
-
-            var result = benchmark.Start((int)benchmarkRepeatsNumber.Value);
-
-            string message = null;
-            foreach(var item in result)
-            {
-                message += $"{item.algorithmName} : {item.lTime} тиков\n";
-            }
-
-            MessageBox.Show(Parent, message, "Результаты");
         }
     }
 }
