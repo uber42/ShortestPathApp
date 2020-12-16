@@ -1,59 +1,54 @@
 ﻿/********************************************************************
-	@created:	2020/09/19
+	@created:	2020/12/08
 	@filename: 	NodeGraph.cs
 	@author:	Pavel Chursin
 *********************************************************************/
 
+using ShortestPathApp.Routing.Interfaces;
 using ShortestPathApp.Utils;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace ShortestPathApp.Graph.Controls
 {
-    public partial class NodeGraph : PictureBox
+    public partial class PacketControl : PictureBox, IPacketControl, ICachedControl
     {
-        private bool m_bIsIncludedInPath;
-
         /// <summary>
-        /// Номер узла
+        /// Номер пакета
         /// </summary>
-        public int nNodeNumber
+        public int nPacketNumber
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Входит ли узел в кратчайший путь
+        /// Эпоха пакета
         /// </summary>
-        public bool IsIncludedInPath
+        public int nPacketTerm
         {
-            get
-            {
-                return m_bIsIncludedInPath;
-            }
-            set
-            {
-                m_bIsIncludedInPath = value;
-                InvalidateCache();
-            }
+            get;
+            set;
         }
 
-        public NodeGraph()
-        {
-            InitializeMovableLogic();
-
+        public PacketControl(int nPacketNumber, Point beginPoint)
+        {                        
             BackColor = Color.Transparent;
-            Size = new Size(Configuration.ms_nGraphNodeRadius * 2 + 3, Configuration.ms_nGraphNodeRadius * 2 + 3);
+            Size = new Size(Configuration.ms_nPacketRadius * 2 + 3, Configuration.ms_nPacketRadius * 2 + 3);
 
-            m_Cache = null;
-            m_bIsIncludedInPath = false;
+            Location = beginPoint;
+
+            this.nPacketNumber = nPacketNumber;
+            nPacketTerm = 0;
+            Cache = null;
+
+            BringToFront();
         }
 
         /// <summary>
         /// Кэш представления
         /// </summary>
-        private Bitmap m_Cache
+        public Bitmap Cache
         {
             get;
             set;
@@ -64,41 +59,39 @@ namespace ShortestPathApp.Graph.Controls
         /// </summary>
         public void InvalidateCache()
         {
-            m_Cache = null;
+            Cache = null;
         }
 
-        protected override void OnPaint(PaintEventArgs pe)
+        /// <summary>
+        /// Закеширован ли контрол
+        /// </summary>
+        /// <returns></returns>
+        public bool IsCached()
         {
-            base.OnPaint(pe);
+            return Cache != null;
+        }
 
-            if (m_Cache != null)
-            {
-                pe.Graphics.DrawImage(m_Cache, 0, 0);
-                return;
-            }
-
-            int nDiameter = Configuration.ms_nGraphNodeRadius * 2;
+        /// <summary>
+        /// Создать кэш
+        /// </summary>
+        public void MakeCache()
+        {
+            int nDiameter = Configuration.ms_nPacketRadius * 2;
             Pen pen = new Pen(Color.Black, 2);
             Font font = SystemFonts.DefaultFont;
-            string sNodeNumber = nNodeNumber.ToString();
+            string sNodeNumber = nPacketNumber.ToString();
             Size numSize = GraphicsUtils.GetStringSize(sNodeNumber, font);
             Brush textColor = Brushes.Black;
 
-            if (IsIncludedInPath)
-            {
-                textColor = Brushes.Red;
-                pen = new Pen(Color.Red, 2);
-            }
+            Cache = new Bitmap(Size.Width, Size.Height);
+            Cache.MakeTransparent();
 
-            m_Cache = new Bitmap(Size.Width, Size.Height);
-            m_Cache.MakeTransparent();
-
-            using (var g = Graphics.FromImage(m_Cache))
+            using (var g = Graphics.FromImage(Cache))
             {
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 g.FillEllipse(
-                    Brushes.Bisque,
+                    Brushes.White,
                     new RectangleF(
                         new Point(1, 1),
                         new Size(nDiameter, nDiameter)
@@ -123,8 +116,26 @@ namespace ShortestPathApp.Graph.Controls
                         )
                     );
             }
+        }
 
-            pe.Graphics.DrawImage(m_Cache, 0, 0);
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+
+            if (IsCached())
+            {
+                pe.Graphics.DrawImage(Cache, 0, 0);
+                return;
+            }
+
+            MakeCache();
+
+            pe.Graphics.DrawImage(Cache, 0, 0);
+        }
+
+        public void Send(Point pFrom, Point pTo)
+        {
+
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)

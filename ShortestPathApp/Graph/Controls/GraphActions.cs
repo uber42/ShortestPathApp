@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ShortestPathApp.Graph.Controls
 {
-    internal partial class NodeGraph : PictureBox
+    public partial class NodeGraph : PictureBox
     {
         private void InitializeNodeGraphActions()
         {
@@ -11,7 +11,7 @@ namespace ShortestPathApp.Graph.Controls
         }
     }
 
-    internal partial class GraphPanel : PictureBox, IGraphControl, IGraphOperations
+    public partial class GraphPanel : PictureBox, IGraphControl, IGraphOperations
     {
         internal enum EDrawEdges
         {

@@ -5,6 +5,7 @@
 *********************************************************************/
 
 using ShortestPathApp.Graph.Interfaces;
+using ShortestPathApp.Routing.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace ShortestPathApp.Graph.Controls
 {
-    internal partial class GraphPanel : PictureBox, IGraphControl, IGraphOperations
+    public partial class GraphPanel : PictureBox, IGraphControl, IGraphOperations, IRoutingViewer
     {
         /// <summary>
         /// Матрица графа
@@ -26,9 +27,32 @@ namespace ShortestPathApp.Graph.Controls
         private List<Tuple<bool, int>> m_lMinPath;
 
         /// <summary>
+        /// Пакеты передаваемые по сети
+        /// </summary>
+        public List<PacketControl> Packets
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Пакеты передаваемые по сети
+        /// </summary>
+        public List<Point> PacketCoords
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Рисовать веса
         /// </summary>
         private bool m_fDrawWeights;
+
+        /// <summary>
+        /// Отправка пакетов
+        /// </summary>
+        private bool m_fTransport;
 
         /// <summary>
         /// Рисовать дуги
@@ -42,6 +66,8 @@ namespace ShortestPathApp.Graph.Controls
             m_fDrawWeights = true;
             Nodes = new List<NodeGraph>();
             m_lMinPath = new List<Tuple<bool, int>>();
+            Packets = new List<PacketControl>();
+            PacketCoords = new List<Point>();
 
             InitializeActions();
         }
@@ -93,7 +119,7 @@ namespace ShortestPathApp.Graph.Controls
         /// <summary>
         /// Изображения узлов
         /// </summary>
-        private List<NodeGraph> Nodes
+        public List<NodeGraph> Nodes
         {
             get;
             set;
@@ -107,6 +133,7 @@ namespace ShortestPathApp.Graph.Controls
             get;
             set;
         }
+        public object Locker { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         /// <summary>
         /// Создать новый узел
@@ -161,6 +188,31 @@ namespace ShortestPathApp.Graph.Controls
                 Nodes[i].IsIncludedInPath = false;
                 m_lMinPath.Add(Tuple.Create(false, 0));
             }
+        }
+
+        public void AddPacket(Point p)
+        {
+            p.X += Configuration.ms_nGraphNodeRadius - Configuration.ms_nPacketRadius;
+            p.Y += Configuration.ms_nGraphNodeRadius - Configuration.ms_nPacketRadius;
+
+            PacketControl packet = new PacketControl(Packets.Count, p);
+            Packets.Add(packet);
+            PacketCoords.Add(p);
+
+            packet.Parent = this;
+            packet.Visible = true;
+            packet.Show();
+            packet.BringToFront();
+        }
+
+        public void StartSendPacket()
+        {
+            m_fTransport = true;
+        }
+
+        public void StopSendPacket()
+        {
+            m_fTransport = false;
         }
 
         /// <summary>
@@ -225,6 +277,14 @@ namespace ShortestPathApp.Graph.Controls
             Initialize(Vertices.Count);
         }
 
+        private void MovePackets()
+        {
+            for (int i = 0; i < Packets.Count; i++)
+            {
+                Packets[i].Location = PacketCoords[i];
+            }
+        }
+
         /// <summary>
         /// Переопределение метода рисования при инвалидации
         /// </summary>
@@ -246,6 +306,15 @@ namespace ShortestPathApp.Graph.Controls
             if (!m_bIsCoordsInit)
             {
                 CalcCoords();
+            }
+
+            if(m_fTransport)
+            {
+                MovePackets();
+                for(int i = 0;i < Nodes.Count;i++)
+                {
+                    Nodes[i].Invalidate();
+                }
             }
 
             if(m_eDrawEdges == EDrawEdges.None)
@@ -277,10 +346,6 @@ namespace ShortestPathApp.Graph.Controls
                             default:
                                 break;
                         }
-
-                        
-
-                        
                     }
                 }
             }
@@ -299,7 +364,6 @@ namespace ShortestPathApp.Graph.Controls
         private void DrawEdges(int i, int j, Graphics g)
         {
             int nNodeRadius = Configuration.ms_nGraphNodeRadius;
-            int nCount = Vertices.Count;
 
             Point nBeginVertex = new Point(
                             Nodes[i].Location.X + nNodeRadius,
@@ -420,7 +484,7 @@ namespace ShortestPathApp.Graph.Controls
         /// <summary>
         /// Инструменты рисования графа
         /// </summary>
-        internal static class GraphPanelTools
+        public static class GraphPanelTools
         {
             public static Pen GraphArrowPen = new Pen(Color.Gray, 1);
 

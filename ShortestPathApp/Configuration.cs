@@ -22,5 +22,15 @@ namespace ShortestPathApp
         /// Радиус узла графа
         /// </summary>
         public static readonly int ms_nGraphNodeRadius = 15;
+
+        /// <summary>
+        /// Радиус пакета
+        /// </summary>
+        public static readonly int ms_nPacketRadius = 7;
+
+        /// <summary>
+        /// Скорость рассылки пакетов
+        /// </summary>
+        public static readonly int ms_nPacketBroadcastVelocity = 5;
     }
 }

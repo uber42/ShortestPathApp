@@ -55,6 +55,17 @@ namespace ShortestPathApp.Algorithms.Floyd
             endPath.Add(nBegin);
         }
 
+        public void BuildMinPath(int nBegin, int nEndVertex, ref List<int> endPath)
+        {
+            while (nBegin != nEndVertex)
+            {
+                endPath.Add(nBegin);
+                nBegin = ParentsMatrix[nBegin][nEndVertex];
+            }
+
+            endPath.Add(nBegin);
+        }
+
         /// <summary>
         /// Выполнить алгоритм
         /// </summary>

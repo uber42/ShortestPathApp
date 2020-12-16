@@ -4,6 +4,7 @@
 	@author:	Pavel Chursin
 *********************************************************************/
 
+using ShortestPathApp.Graph.Controls;
 using ShortestPathApp.Graph.Interfaces;
 using ShortestPathApp.Graph.Views.Interfaces;
 using System;
@@ -14,7 +15,7 @@ namespace ShortestPathApp.Graph.Views
 {
     public partial class GraphLogicalView : UserControl, IGraphLogicalView
     {
-        private List<List<int>> m_lMatrix;
+        private List<List<int>> Matrix;
 
         private List<int> m_lMinPath;
 
@@ -22,7 +23,7 @@ namespace ShortestPathApp.Graph.Views
         {
             InitializeComponent();
 
-            graphPanel1.Vertices = Vertices;
+            graphPanel.Vertices = Vertices;
         }
 
         #region Имплементация интерфейса IView
@@ -80,12 +81,12 @@ namespace ShortestPathApp.Graph.Views
         {
             get
             {
-                return m_lMatrix;
+                return Matrix;
             }
             set
             {
-                m_lMatrix = value;
-                graphPanel1.Vertices = Vertices;
+                Matrix = value;
+                graphPanel.Vertices = Vertices;
             }
         }
 
@@ -98,7 +99,7 @@ namespace ShortestPathApp.Graph.Views
         /// </summary>
         public void UpdateView()
         {
-            graphPanel1.Invalidate();
+            graphPanel.Invalidate();
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace ShortestPathApp.Graph.Views
         /// </summary>
         public void AddVertex()
         {
-            graphPanel1.AddVertex();
+            graphPanel.AddVertex();
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace ShortestPathApp.Graph.Views
         /// <param name="nvertex"></param>
         public void RemoveVertex(int nvertex)
         {
-            graphPanel1.RemoveVertex(nvertex);
+            graphPanel.RemoveVertex(nvertex);
         }
 
         /// <summary>
@@ -126,15 +127,36 @@ namespace ShortestPathApp.Graph.Views
         /// <param name="nWeight">Вес</param>
         public void SetEdge(int nvertexFirst, int nvertexSecond, int nWeight)
         {
-            graphPanel1.SetEdge(nvertexFirst, nvertexSecond, nWeight);
+            graphPanel.SetEdge(nvertexFirst, nvertexSecond, nWeight);
         }
 
 
         #endregion Имплементация интерфейса IGraphOperations
 
+        /// <summary>
+        /// Получить узел графа
+        /// </summary>
+        /// <param name="index">Номер узла</param>
+        /// <returns></returns>
+        public NodeGraph GetGraphNodeAt(int index)
+        {
+            if(graphPanel.Nodes.Count <= index)
+            {
+                throw new Exception();
+            }
+
+            return graphPanel.Nodes[index];
+        }
+
+        public IGraphControl GetPanel()
+        {
+            return graphPanel;
+        }
+
+
         public void BuildPath(List<int> path)
         {
-            graphPanel1.SetMinPath(path);
+            graphPanel.SetMinPath(path);
         }
     }
 }

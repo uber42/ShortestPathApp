@@ -6,7 +6,7 @@
 
 namespace ShortestPathApp.Graph.Interfaces
 {
-    internal interface IGraphControl : IGraphData
+    public interface IGraphControl : IGraphData
     {
     }
 }

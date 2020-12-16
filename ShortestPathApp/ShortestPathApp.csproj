@@ -70,6 +70,7 @@
     <Compile Include="Algorithms\Views\AlgorithmControlView.Designer.cs">
       <DependentUpon>AlgorithmControlView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dependency\DependencyContainer.cs" />
     <Compile Include="Graph\Controls\GraphPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,7 +138,32 @@
     <Compile Include="MVP\Support\PresenterEvent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\Algorithms\AvalancheTransfer.cs" />
+    <Compile Include="Routing\Algorithms\LearningTransfer.cs" />
+    <Compile Include="Routing\Algorithms\RandomDatagramTransfer.cs" />
+    <Compile Include="Routing\Algorithms\VirtualChannelTransfer.cs" />
+    <Compile Include="Routing\Background\RoutineArg.cs" />
+    <Compile Include="Routing\Controls\PacketControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Routing\Forms\RoutingTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Routing\Forms\RoutingTable.Designer.cs">
+      <DependentUpon>RoutingTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Routing\Interfaces\ICachedControl.cs" />
+    <Compile Include="Routing\Interfaces\IPacketControl.cs" />
+    <Compile Include="Routing\Interfaces\IRoutingViewer.cs" />
+    <Compile Include="Routing\Interfaces\IRoutingAlgorithm.cs" />
+    <Compile Include="Routing\Views\RoutingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Routing\Views\RoutingControl.Designer.cs">
+      <DependentUpon>RoutingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\GraphicsUtils.cs" />
+    <Compile Include="Utils\MathHelper.cs" />
     <EmbeddedResource Include="Algorithms\Views\AlgorithmControlView.resx">
       <DependentUpon>AlgorithmControlView.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +203,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Routing\Forms\RoutingTable.resx">
+      <DependentUpon>RoutingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Routing\Views\RoutingControl.resx">
+      <DependentUpon>RoutingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\ShortestPathApp.Algorithms.Interfaces.IShortestPathAlgorithm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

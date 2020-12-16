@@ -11,7 +11,13 @@ using System.Windows.Forms;
 
 namespace ShortestPathApp.Graph.Controls
 {
-    internal class NodeViewMoveEventArgs : EventArgs
+    /// <summary>
+    /// Делегат для обработчиков событий перемещения
+    /// </summary>
+    /// <param name="args"></param>
+    public delegate void NodeViewMoveEventHandler(NodeViewMoveEventArgs e);
+
+    public class NodeViewMoveEventArgs : EventArgs
     {
         /// <summary>
         /// Узел
@@ -52,12 +58,6 @@ namespace ShortestPathApp.Graph.Controls
         }
     }
 
-    /// <summary>
-    /// Делегат для обработчиков событий перемещения
-    /// </summary>
-    /// <param name="args"></param>
-    internal delegate void NodeViewMoveEventHandler(NodeViewMoveEventArgs e);
-
     internal static class GraphicComputing
     {
         /// <summary>
@@ -88,7 +88,7 @@ namespace ShortestPathApp.Graph.Controls
         }
     }
 
-    internal partial class NodeGraph : PictureBox
+    public partial class NodeGraph : PictureBox
     {
         /// <summary>
         /// Нажата ли сейчас кнопка мыши над узлом
@@ -180,7 +180,7 @@ namespace ShortestPathApp.Graph.Controls
         }
     }
 
-    internal partial class GraphPanel : PictureBox, IGraphControl, IGraphOperations
+    public partial class GraphPanel : PictureBox, IGraphControl, IGraphOperations
     {
         /// <summary>
         /// Инициализация логики перемещения для узла в графе

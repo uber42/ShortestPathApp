@@ -34,14 +34,20 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.graphLogicalView1 = new ShortestPathApp.Graph.Views.GraphLogicalView();
             this.GraphControlView = new ShortestPathApp.Graph.Views.GraphControlView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.shortestPathView1 = new ShortestPathApp.Algorithms.Views.ShortestPathView();
             this.algorithmControlView1 = new ShortestPathApp.Algorithms.Views.AlgorithmControlView();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.routingControl1 = new ShortestPathApp.Routing.Views.RoutingControl();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GraphMatrixView
@@ -94,30 +100,15 @@
             // 
             // GraphControlView
             // 
-            this.GraphControlView.Location = new System.Drawing.Point(449, 23);
+            this.GraphControlView.Location = new System.Drawing.Point(3, 3);
             this.GraphControlView.Name = "GraphControlView";
-            this.GraphControlView.Size = new System.Drawing.Size(216, 276);
+            this.GraphControlView.Size = new System.Drawing.Size(216, 297);
             this.GraphControlView.TabIndex = 3;
             this.GraphControlView.Vertices = null;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StripStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(666, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // StripStatus
-            // 
-            this.StripStatus.Name = "StripStatus";
-            this.StripStatus.Size = new System.Drawing.Size(0, 17);
-            // 
             // shortestPathView1
             // 
-            this.shortestPathView1.Location = new System.Drawing.Point(5, 379);
+            this.shortestPathView1.Location = new System.Drawing.Point(461, 313);
             this.shortestPathView1.Name = "shortestPathView1";
             this.shortestPathView1.NodesOrder = null;
             this.shortestPathView1.NodesWeight = null;
@@ -126,33 +117,82 @@
             // 
             // algorithmControlView1
             // 
-            this.algorithmControlView1.Location = new System.Drawing.Point(453, 305);
+            this.algorithmControlView1.Location = new System.Drawing.Point(6, 6);
             this.algorithmControlView1.Name = "algorithmControlView1";
             this.algorithmControlView1.Size = new System.Drawing.Size(218, 155);
             this.algorithmControlView1.TabIndex = 7;
             this.algorithmControlView1.VertexCount = 0;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Location = new System.Drawing.Point(671, 2);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(233, 305);
+            this.tabControl2.TabIndex = 8;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.algorithmControlView1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(225, 279);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "Кратчайщие пути";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.routingControl1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(225, 279);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "Маршрутизация";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // routingControl1
+            // 
+            this.routingControl1.Location = new System.Drawing.Point(5, 1);
+            this.routingControl1.Name = "routingControl1";
+            this.routingControl1.Size = new System.Drawing.Size(216, 275);
+            this.routingControl1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.GraphControlView);
+            this.panel1.Location = new System.Drawing.Point(449, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(222, 302);
+            this.panel1.TabIndex = 9;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 461);
-            this.Controls.Add(this.algorithmControlView1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(908, 385);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.shortestPathView1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.GraphControlView);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.tabControl1);
-            this.MaximumSize = new System.Drawing.Size(682, 500);
-            this.MinimumSize = new System.Drawing.Size(682, 500);
+            this.MaximumSize = new System.Drawing.Size(924, 424);
+            this.MinimumSize = new System.Drawing.Size(924, 424);
             this.Name = "MainView";
             this.Text = "Поиск кратчайшего пути в графе";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -164,10 +204,13 @@
         private System.Windows.Forms.TabPage tabPage2;
         private Graph.Views.GraphControlView GraphControlView;
         private Graph.Views.GraphLogicalView graphLogicalView1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel StripStatus;
         private Algorithms.Views.ShortestPathView shortestPathView1;
         private Algorithms.Views.AlgorithmControlView algorithmControlView1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private Routing.Views.RoutingControl routingControl1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

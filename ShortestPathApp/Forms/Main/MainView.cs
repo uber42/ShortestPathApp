@@ -6,6 +6,7 @@
 
 using ShortestPathApp.Algorithms;
 using ShortestPathApp.Algorithms.Interfaces;
+using ShortestPathApp.Dependency;
 using ShortestPathApp.Graph;
 using ShortestPathApp.Graph.Interfaces;
 using System.Windows.Forms;
@@ -24,11 +25,6 @@ namespace ShortestPathApp.Forms.Main
         {
             InitializeComponent();
 
-            GraphControlView.OnMessage += (obj, message) =>
-            {
-                StripStatus.Text += message;
-            };
-
             graph = new GraphModel(4);
             shortestPath = new ShortestPathModel();
 
@@ -41,6 +37,8 @@ namespace ShortestPathApp.Forms.Main
             GraphControlView.AttachToPresenter(graphPresenter, true);
             GraphMatrixView.AttachToPresenter(graphPresenter, true);
             graphLogicalView1.AttachToPresenter(graphPresenter, true);
+
+            DependencyContainer.AddDependency("matrix_logical", graphLogicalView1);
         }
     }
 }

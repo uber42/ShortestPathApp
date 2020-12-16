@@ -34,8 +34,7 @@ namespace ShortestPathApp.Graph
             m_cModel = model ??
                 throw new ArgumentNullException(nameof(model));
 
-            m_cShortestPath = shortestPath ??
-                throw new ArgumentNullException(nameof(shortestPath));
+            m_cShortestPath = shortestPath;
 
             m_cModel.OnUpdateCell += HandleUpdateCell;
             m_cModel.OnUpdateMatrix += HandleUpdateMatrix;
@@ -68,7 +67,7 @@ namespace ShortestPathApp.Graph
             }
 
             viewInstance.Vertices = m_cModel.Vertices;
-            m_cShortestPath.UpdateFromGraph();
+            m_cShortestPath?.UpdateFromGraph();
         }
 
         #endregion Переопределение методов PresenterBase
@@ -93,7 +92,7 @@ namespace ShortestPathApp.Graph
                 });
             }
 
-            m_cShortestPath.UpdateFromGraph();
+            m_cShortestPath?.UpdateFromGraph();
         }
 
         /// <summary>
@@ -116,7 +115,7 @@ namespace ShortestPathApp.Graph
                 });
             }
 
-            m_cShortestPath.UpdateFromGraph();
+            m_cShortestPath?.UpdateFromGraph();
         }
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace ShortestPathApp.Graph
                 });
             }
 
-            m_cShortestPath.UpdateFromGraph();
+            m_cShortestPath?.UpdateFromGraph();
         }
 
         /// <summary>
@@ -159,7 +158,7 @@ namespace ShortestPathApp.Graph
                     }
                 });
 
-            m_cShortestPath.UpdateFromGraph();
+            m_cShortestPath?.UpdateFromGraph();
         }
 
         private void HandleBuildPath(object sender, System.Collections.Generic.List<int> e)

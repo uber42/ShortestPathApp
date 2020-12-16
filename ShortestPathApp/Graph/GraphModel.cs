@@ -92,6 +92,8 @@ namespace ShortestPathApp.Graph
 
                 Vertices.Add(internalList);
             }
+
+            //OnUpdateMatrix?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

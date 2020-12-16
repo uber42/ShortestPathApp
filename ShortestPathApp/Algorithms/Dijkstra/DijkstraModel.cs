@@ -115,6 +115,32 @@ namespace ShortestPathApp.Algorithms.Dijkstra
             endPath.Add(nEndVertex);
         }
 
+        /// <summary>
+        /// Вычислить последовательность обхода вершин
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <param name="nEndVertex"></param>
+        /// <param name="endPath"></param>
+        public void BuildMinPath(int nBegin, int nEndVertex, ref List<int> endPath)
+        {
+            List<int> paths = new List<int>();
+            List<int> mockList = null;
+            this.Execute(nBegin, ref mockList, ref paths);
+
+            BuildMinPathInternal(paths, nEndVertex, ref endPath);
+        }
+
+        public void BuildMinPathInternal(List<int> paths, int nEndVertex, ref List<int> endPath)
+        {
+            if (nEndVertex == -1)
+            {
+                return;
+            }
+
+            BuildMinPath(LastPath[nEndVertex], ref endPath);
+            endPath.Add(nEndVertex);
+        }
+
         public void Invalidate()
         {
             return;

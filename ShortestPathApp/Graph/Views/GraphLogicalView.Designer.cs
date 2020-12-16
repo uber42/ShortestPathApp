@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.graphPanel1 = new ShortestPathApp.Graph.Controls.GraphPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.graphPanel1)).BeginInit();
+            this.graphPanel = new ShortestPathApp.Graph.Controls.GraphPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.graphPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // graphPanel1
             // 
-            this.graphPanel1.BackColor = System.Drawing.Color.Lavender;
-            this.graphPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.graphPanel1.Location = new System.Drawing.Point(0, 0);
-            this.graphPanel1.Name = "graphPanel1";
-            this.graphPanel1.Size = new System.Drawing.Size(435, 409);
-            this.graphPanel1.TabIndex = 0;
-            this.graphPanel1.TabStop = false;
-            this.graphPanel1.Vertices = null;
+            this.graphPanel.BackColor = System.Drawing.Color.Lavender;
+            this.graphPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.graphPanel.Location = new System.Drawing.Point(0, 0);
+            this.graphPanel.Name = "graphPanel1";
+            this.graphPanel.Size = new System.Drawing.Size(435, 409);
+            this.graphPanel.TabIndex = 0;
+            this.graphPanel.TabStop = false;
+            this.graphPanel.Vertices = null;
             // 
             // GraphLogicalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.graphPanel1);
+            this.Controls.Add(this.graphPanel);
             this.Name = "GraphLogicalView";
             this.Size = new System.Drawing.Size(435, 409);
-            ((System.ComponentModel.ISupportInitialize)(this.graphPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graphPanel)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Controls.GraphPanel graphPanel1;
+        private Controls.GraphPanel graphPanel;
     }
 }
